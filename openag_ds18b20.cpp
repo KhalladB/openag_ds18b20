@@ -27,8 +27,8 @@ void Ds18b20::update() {
       status_level = OK;
       status_msg = "";
       _waiting_for_conversion = false;
-      _temperature = _sensors.getTempC(_address);
-      _send_temperature = true;
+      _water_temperature = _sensors.getTempC(_address);
+      _send_water_temperature = true;
     }
     else if (millis() - _time_of_last_query > _min_update_interval) {
       status_level = ERROR;
@@ -42,9 +42,9 @@ void Ds18b20::update() {
   }
 }
 
-bool Ds18b20::get_temperature(std_msgs::Float32 &msg) {
-  msg.data = _temperature;
-  bool res = _send_temperature;
-  _send_temperature = false;
+bool Ds18b20::get_water_temperature(std_msgs::Float32 &msg) {
+  msg.data = _water_temperature;
+  bool res = _send_water_temperature;
+  _send_water_temperature = false;
   return res;
 }
