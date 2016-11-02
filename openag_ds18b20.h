@@ -24,14 +24,14 @@ class Ds18b20 : public Module {
     Ds18b20(int pin);
     void begin();
     void update();
-    bool get_temperature(std_msgs::Float32 &msg);
+    bool get_water_temperature(std_msgs::Float32 &msg);
 
   private:
     OneWire _oneWire;
     DeviceAddress _address;
     DallasTemperature _sensors;
-    bool _send_temperature;
-    float _temperature;
+    bool _send_water_temperature;
+    float _water_temperature;
     uint32_t _time_of_last_query;
     bool _waiting_for_conversion;
     const static uint32_t _min_update_interval = 2000;
