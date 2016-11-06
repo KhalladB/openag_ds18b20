@@ -34,7 +34,7 @@ class Ds18b20 : public Module {
     float _water_temperature;
     uint32_t _time_of_last_query;
     bool _waiting_for_conversion;
-    const static uint32_t _min_update_interval = 2000;
+    const static uint32_t _min_update_interval = 1800;
 };
 
 #endif
